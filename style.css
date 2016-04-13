@@ -18,3 +18,21 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.title {
+    text-align: center;
+}
+
+td, th {
+    text-align: left;
+}
+
+table {
+    min-width: 500px;
+}
+
+label {
+    display: inline-block;
+    width: 200px;
+    font-weight: bold;
+}
