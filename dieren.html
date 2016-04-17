@@ -79,7 +79,10 @@
 <h2>Dier toevoegen</h2>
 <form>
     <label for="add-name">Naam</label>
-    <input type="text" id="add-name">
+    <input type="text" id="add-name" onfocus="$('#add-name-hint').removeClass('hidden');" onblur="$('#add-name-hint').addClass('hidden')">
+    <p class="hidden" id="add-name-hint">
+        Verplicht
+    </p>
     <br>
 
     <label for="add-age">Leeftijd</label>

@@ -50,3 +50,12 @@ input[type="button"], input[type="submit"] {
     font-weight: bold;
     cursor: pointer;
 }
+
+.hidden {
+    display: none;
+}
+
+form p {
+    display: inline-block;
+    margin: 0;
+}
