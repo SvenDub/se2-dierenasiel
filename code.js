@@ -1,17 +1,6 @@
 function OnReady() {
-    
-    var dog = localStorage.getItem('dog');
-    
-    if (dog !== null) {
-        alert(dog);
-    }
+    reloadAnimals();
 
-    var cat = localStorage.getItem('cat');
-
-    if (cat !== null) {
-        alert(cat);
-    }
-    
     var name = $('#add-name');
     var nameHint = $('#add-name-hint');
     var idHint = $('#add-id-hint');
@@ -66,7 +55,12 @@ function OnSubmit(event) {
         return;
     }
 
-    localStorage.setItem(animal.species, JSON.stringify(animal));
+    var animals = JSON.parse(localStorage.getItem('animals'));
+    if (!Array.isArray(animals)) {
+        animals = [];
+    }
+    animals.push(animal);
+    localStorage.setItem('animals', JSON.stringify(animals));
 }
 
 function show(el) {
@@ -75,6 +69,35 @@ function show(el) {
 
 function hide(el) {
     el.addClass('hidden');
+}
+
+function reloadAnimals() {
+    var animals = JSON.parse(localStorage.getItem('animals'));
+
+    var dogTable = $('#animal-honden-data');
+    var catTable = $('#animal-katten-data');
+
+    dogTable.empty();
+    catTable.empty();
+
+    if (animals != null && Array.isArray(animals)) {
+        animals.forEach(function (animal) {
+
+            var table;
+            if (animal.species === 'dog') {
+                table = dogTable;
+            } else if (animal.species === 'cat') {
+                table = catTable;
+            }
+
+            table.append('<tr>' +
+                '<td>' + animal.name + '</td>' +
+                '<td>' + (animal.age ? animal.age : '') + '</td>' +
+                '<td>' + (animal.regnr ? animal.regnr : '') + '</td>' +
+                '<td>' + (animal.reserved ? 'Ja' : 'Nee') + '</td>' +
+                '</tr>')
+        });
+    }
 }
 
 $(document).ready(OnReady);
