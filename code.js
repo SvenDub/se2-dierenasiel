@@ -14,6 +14,14 @@ function OnReady() {
     });
 
     $('#add-form').submit(OnSubmit);
+    $('#delete-dogs').click(function () {
+        deleteAnimals('dog');
+        reloadAnimals();
+    });
+    $('#delete-cats').click(function () {
+        deleteAnimals('cat');
+        reloadAnimals();
+    });
 }
 
 function OnSubmit(event) {
@@ -61,6 +69,12 @@ function OnSubmit(event) {
     }
     animals.push(animal);
     localStorage.setItem('animals', JSON.stringify(animals));
+
+    // Prevent submission when using localStorage
+    event.preventDefault();
+    $('#add-form')[0].reset();
+
+    reloadAnimals();
 }
 
 function show(el) {
@@ -100,4 +114,26 @@ function reloadAnimals() {
     }
 }
 
+function deleteAnimals(species) {
+    var animals = JSON.parse(localStorage.getItem('animals'));
+    if (!Array.isArray(animals)) {
+        animals = [];
+    }
+    animals.removeIf(function (animal) {
+        console.log('Check ' + animal.species + ' === ' + species);
+        return animal.species === species;
+    });
+    localStorage.setItem('animals', JSON.stringify(animals));
+}
+
 $(document).ready(OnReady);
+
+// Overrides
+Array.prototype.removeIf = function (callback) {
+    var i = this.length;
+    while (i--) {
+        if (callback(this[i], i)) {
+            this.splice(i, 1);
+        }
+    }
+};
