@@ -1,4 +1,17 @@
 function OnReady() {
+    
+    var dog = localStorage.getItem('dog');
+    
+    if (dog !== null) {
+        alert(dog);
+    }
+
+    var cat = localStorage.getItem('cat');
+
+    if (cat !== null) {
+        alert(cat);
+    }
+    
     var name = $('#add-name');
     var nameHint = $('#add-name-hint');
     var idHint = $('#add-id-hint');
@@ -53,7 +66,7 @@ function OnSubmit(event) {
         return;
     }
 
-    console.log(animal);
+    localStorage.setItem(animal.species, JSON.stringify(animal));
 }
 
 function show(el) {
