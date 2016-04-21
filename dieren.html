@@ -35,13 +35,13 @@
         <tr>
             <td>Jan</td>
             <td>5</td>
-            <td>65164</td>
+            <td>065164</td>
             <td>Ja</td>
         </tr>
         <tr>
             <td>Piet</td>
             <td>4</td>
-            <td>65165</td>
+            <td>065165</td>
             <td>Nee</td>
         </tr>
         </tbody>
@@ -65,20 +65,20 @@
         <tr>
             <td>Klaas</td>
             <td>2</td>
-            <td>65166</td>
+            <td>065166</td>
             <td>Nee</td>
         </tr>
         <tr>
             <td>Henk</td>
             <td>7</td>
-            <td>65167</td>
+            <td>065167</td>
             <td>Ja</td>
         </tr>
         </tbody>
     </table>
 </section>
 <h2>Dier toevoegen</h2>
-<form>
+<form id="add-form">
     <label for="add-name">Naam</label>
     <input type="text" id="add-name">
     <p class="hidden" id="add-name-hint">
@@ -92,6 +92,9 @@
 
     <label for="add-id">Reg. Nr.</label>
     <input type="number" id="add-id">
+    <p class="hidden" id="add-id-hint">
+        Het registratienummer is niet verplicht, maar moet als deze ingevuld is met een 0 beginnen.
+    </p>
     <br>
 
     <label for="add-reserved">Gereserveerd</label>
@@ -99,13 +102,13 @@
     <br>
 
     <label for="add-type-dog">Hond</label>
-    <input type="radio" id="add-type-dog" name="add-type">
+    <input type="radio" id="add-type-dog" name="add-type" value="dog">
     <br>
     <label for="add-type-cat">Kat</label>
-    <input type="radio" id="add-type-cat" name="add-type">
+    <input type="radio" id="add-type-cat" name="add-type" value="cat">
     <br>
 
-    <input type="submit" value="Toevoegen">
+    <input type="submit" id="add-submit" value="Toevoegen">
 </form>
 </body>
 </html>
