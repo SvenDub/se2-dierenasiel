@@ -1,4 +1,4 @@
-function OnReady() {
+﻿function OnReady() {
     reloadAnimals();
 
     var name = $('#add-name');
@@ -120,7 +120,6 @@ function deleteAnimals(species) {
         animals = [];
     }
     animals.removeIf(function (animal) {
-        console.log('Check ' + animal.species + ' === ' + species);
         return animal.species === species;
     });
     localStorage.setItem('animals', JSON.stringify(animals));
