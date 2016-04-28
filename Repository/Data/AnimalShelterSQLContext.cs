@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Models;
 using MySql.Data.MySqlClient;
 
@@ -98,11 +95,10 @@ namespace Repository.Data
                 if (animal.Id == -1)
                 {
                     string idQuery = "SELECT LAST_INSERT_ID();";
-                    using (MySqlCommand idCmd = NewCommand(idQuery))
-                    {
-                        int idResult = Convert.ToInt32(idCmd.ExecuteScalar());
-                        animal.Id = idResult;
-                    }
+                    cmd.CommandText = idQuery;
+                    int idResult = Convert.ToInt32(cmd.ExecuteScalar());
+                    Console.WriteLine("Created new Animal#" + idResult);
+                    animal.Id = idResult;
                 }
             }
         }
@@ -127,11 +123,10 @@ namespace Repository.Data
                 if (reservor.Id == -1)
                 {
                     string idQuery = "SELECT LAST_INSERT_ID();";
-                    using (MySqlCommand idCmd = NewCommand(idQuery))
-                    {
-                        int idResult = Convert.ToInt32(idCmd.ExecuteScalar());
-                        reservor.Id = idResult;
-                    }
+                    cmd.CommandText = idQuery;
+                    int idResult = Convert.ToInt32(cmd.ExecuteScalar());
+                    Console.WriteLine("Created new Reservor#" + idResult);
+                    reservor.Id = idResult;
                 }
             }
         }
