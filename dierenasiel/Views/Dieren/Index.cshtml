@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Models
+@using System.Linq
+@{
     ViewBag.Title = "Aanwezige dieren";
 }
 <h1>Aanwezige dieren</h1>
@@ -23,12 +25,19 @@
         <thead>
         <tr>
             <th>Naam</th>
-            <th>Leeftijd</th>
             <th>Reg. Nr.</th>
             <th>Gereserveerd</th>
         </tr>
         </thead>
         <tbody id="animal-honden-data">
+        @foreach (Dog dog in ((List<Animal>) ViewBag.Animals).OfType<Dog>().ToList())
+        {
+            <tr>
+                <td>@dog.Name</td>
+                <td>@dog.Id</td>
+                <td>@{ WriteLiteral(dog.ReservedBy == null ? "Nee" : "Ja"); }</td>
+            </tr>
+        }
         </tbody>
     </table>
 </section>
@@ -42,12 +51,19 @@
         <thead>
         <tr>
             <th>Naam</th>
-            <th>Leeftijd</th>
             <th>Reg. Nr.</th>
             <th>Gereserveerd</th>
         </tr>
         </thead>
         <tbody id="animal-katten-data">
+        @foreach (Cat cat in ((List<Animal>) ViewBag.Animals).OfType<Cat>().ToList())
+        {
+            <tr>
+                <td>@cat.Name</td>
+                <td>@cat.Id</td>
+                <td>@{ WriteLiteral(cat.ReservedBy == null ? "Nee" : "Ja"); }</td>
+            </tr>
+        }
         </tbody>
     </table>
 </section>

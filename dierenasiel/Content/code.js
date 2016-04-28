@@ -86,7 +86,7 @@ function hide(el) {
 }
 
 function reloadAnimals() {
-    var animals = JSON.parse(localStorage.getItem("animals"));
+    /*var animals = JSON.parse(localStorage.getItem("animals"));
 
     var dogTable = $("#animal-honden-data");
     var catTable = $("#animal-katten-data");
@@ -111,7 +111,7 @@ function reloadAnimals() {
                 "<td>" + (animal.reserved ? "Ja" : "Nee") + "</td>" +
                 "</tr>")
         });
-    }
+    }*/
 }
 
 function deleteAnimals(species) {
