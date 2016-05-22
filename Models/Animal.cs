@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,11 @@ namespace Models
     public abstract class Animal : Products.ISellable
     {
         public int Id { get; set; }
-        public string Name { get; private set; }
-        public Gender Gender { get; private set; }
+        [DisplayName("Naam")]
+        public string Name { get; set; }
+        [DisplayName("Geslacht")]
+        public Gender Gender { get; set; }
+        [DisplayName("Gereserveerd door")]
         public Reservor ReservedBy { get; private set; }
 
         public decimal Price { get; protected set; }

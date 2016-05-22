@@ -10,7 +10,7 @@ namespace Animal_Shelter
     public partial class Form1 : Form
     {
         private Reservation reservations =
-            new Reservation(new AnimalShelterSQLContext());
+            new Reservation(new AnimalShelterSqlContext());
         private Webshop webshop = new Webshop();
 
         public Form1()

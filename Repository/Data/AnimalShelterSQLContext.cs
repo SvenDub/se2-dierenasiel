@@ -5,10 +5,10 @@ using MySql.Data.MySqlClient;
 
 namespace Repository.Data
 {
-    public class AnimalShelterSQLContext : IAnimalShelterContext
+    public class AnimalShelterSqlContext : IAnimalShelterContext
     {
         private static string connectionString =
-            "server=localhost;uid=fontys;" +
+            "server=db;uid=fontys;" +
             "pwd=fontys;database=se2;";
 
         private MySqlCommand NewCommand(string query)
